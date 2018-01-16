@@ -1,0 +1,106 @@
+body{
+    margin:0 3%;
+}
+
+header, footer,aside{
+    background-color: #f5faff;
+}
+#aside{
+    position: sticky;
+    top: 0;
+}
+footer ul{
+    list-style: none;
+    margin-top: 25px;
+}
+footer{
+    padding-top: 10px;
+}
+footer .social-media{
+    font-size: 2em;
+}
+.nav{
+    margin-top: 24px;
+}
+.bank-card{
+    background-color: rgba(76, 175, 80, 0.04);
+    padding: 5px;
+    margin: 10px;
+}
+.nav .active{
+    border: solid;
+}
+.table-prestations{
+    margin: 0 auto;
+    display: none;
+}
+
+
+/****************************diaporam**********************************/
+.diaporama{
+    height: 250px;
+    white-space: nowrap; /******the trick*****/
+    overflow: hidden;
+    position: relative;
+}
+
+.diaporama img{
+    display:inline-block;
+    width: 600px;
+    height: 100%;
+    position: absolute;
+
+    padding-right: 20px;
+    background-color: black;
+}
+
+.diaporama:hover img{
+    animation-play-state: paused;
+}
+
+@keyframes left-to-right {
+    from {transform:translateX(0px);}
+    to {transform:translateX(2480px);}
+}
+
+
+#img1{
+    left:-620px;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 0s;
+}
+
+#img2{
+    left:-620px;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 3s;
+}
+
+#img3{
+    left:-620px;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 6s;
+}
+
+#img4{
+    left:-620px;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 9s;
+}
+
