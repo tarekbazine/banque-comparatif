@@ -2,10 +2,12 @@
 
 namespace TP\Models;
 
+use TP\Core\DB;
+
 class Admin{
 
-    public function checkUser($nom,$mdp) {
-        $db= Database::getDB();
+    public function checkAdmin($nom,$mdp) {
+        $db= DB::getInstance();
 
         $stmt = $db->prepare("SELECT * FROM admin WHERE nom = :nom AND mot_de_passe = :mdp");
 

@@ -16,7 +16,7 @@ class Banque{
         $sql = "SELECT * FROM `banque` JOIN gestion_tenue_compte JOIN monetique JOIN operation_paiement
                   ON banque.id_gestion_compte = gestion_tenue_compte.id_gestion_compte 
                     AND banque.id_operations_paiement = operation_paiement.id_operation 
-                    AND banque.id_monetique = monetique.id_monetique LIMIT ";
+                    AND banque.id_monetique = monetique.id_monetique ORDER BY banque.nom ASC LIMIT ";
 
 //        if ($avecId) { $avecId = false,
 //            $sql = "SELECT `id`, `nom`, `siege_social`, `telephone`, `fax`, `id_gestion_compte`, `id_operations_paiement`, `id_monetique` FROM `banque` LIMIT ";
