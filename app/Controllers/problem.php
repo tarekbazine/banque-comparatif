@@ -10,8 +10,7 @@
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-class Problem extends Controller
-{
+class Problem {
     /**
      * PAGE: index
      * This method handles the error page that will be shown when a page is not found

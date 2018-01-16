@@ -32,7 +32,7 @@ class Application
 
             // if so, then load this file and create this controller
             // example: if controller would be "car", then this line would translate into: $this->car = new car();
-            require APP . 'controller/' . $this->url_controller . '.php';
+            require APP . 'Controllers/' . $this->url_controller . '.php';
             $this->url_controller = new $this->url_controller();
 
             // check for method: does such a method exist in the controller ?
@@ -52,11 +52,14 @@ class Application
                     $this->url_controller->index();
                 }
                 else {
-                    header('location: ' . URL . 'problem');
+//                    echo URL;
+                    header('location: ' . URL . 'home');
+//                    header('location: ' . URL . 'problem');
                 }
             }
         } else {
-            header('location: ' . URL . 'problem');
+            header('location: ' . URL . 'home');
+//            header('location: ' . URL . 'problem');
         }
     }
 

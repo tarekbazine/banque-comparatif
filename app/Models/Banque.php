@@ -8,15 +8,17 @@ use TP\Core\DB;
 
 class Banque{
 
-    public static function getBanques($limit = 30)
+    public static function getBanques($limit = 30,$columName = null)
     {
         $db = DB::getInstance();
 
+        if (isset($columName))
+            $columName = $columName." ASC ,";
 //        $sql = "SELECT `nom`, `siege_social`, `telephone`, `fax`, `id_gestion_compte`, `id_operations_paiement`, `id_monetique` FROM `banque` LIMIT ";
         $sql = "SELECT * FROM `banque` JOIN gestion_tenue_compte JOIN monetique JOIN operation_paiement
                   ON banque.id_gestion_compte = gestion_tenue_compte.id_gestion_compte 
                     AND banque.id_operations_paiement = operation_paiement.id_operation 
-                    AND banque.id_monetique = monetique.id_monetique ORDER BY banque.nom ASC LIMIT ";
+                    AND banque.id_monetique = monetique.id_monetique ORDER BY ".$columName." banque.nom ASC LIMIT ";
 
 //        if ($avecId) { $avecId = false,
 //            $sql = "SELECT `id`, `nom`, `siege_social`, `telephone`, `fax`, `id_gestion_compte`, `id_operations_paiement`, `id_monetique` FROM `banque` LIMIT ";
@@ -31,6 +33,29 @@ class Banque{
         return $query->fetchAll();
     }
 
+
+    public static function getBanquesBetween($columName = null,$min = 0,$max = 100)
+    {
+        $db = DB::getInstance();
+
+        $sql = "SELECT * FROM `banque` JOIN gestion_tenue_compte JOIN monetique JOIN operation_paiement
+                  ON banque.id_gestion_compte = gestion_tenue_compte.id_gestion_compte 
+                    AND banque.id_operations_paiement = operation_paiement.id_operation 
+                    AND banque.id_monetique = monetique.id_monetique 
+                    WHERE :columName BETWEEN :min AND :max 
+                    ORDER BY banque.nom ASC ";
+
+        $query = $db->prepare($sql);
+        $parameters = array(
+            ':columName' => $columName,
+            ':min' => $min,
+            ':max' => $max
+        );
+
+        $query->execute($parameters);
+
+        return $query->fetchAll();
+    }
 
     public static function addBanque($nom, $siege_social, $telephone, $fax)
     {
@@ -81,12 +106,8 @@ class Banque{
         $query = $db->prepare($sql);
         $parameters = array(':nom' => $nom, ':siege_social' => $siege_social, ':telephone' => $telephone,':fax' => $fax, ':id_banque' => $id_banque);
 
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
         $query->execute($parameters);
     }
-
 
 
 
@@ -150,6 +171,8 @@ class Banque{
 
         $query->execute($parameters);
     }
+
+
 
 
     /*
