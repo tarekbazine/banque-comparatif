@@ -8,7 +8,7 @@ use TP\Core\DB;
 
 class Banque{
 
-    public static function getBanques($limit = 30,$columName = null)
+    public static function getBanques($columName = null,$limit = 30)
     {
         $db = DB::getInstance();
 
@@ -39,20 +39,16 @@ class Banque{
         $db = DB::getInstance();
 
         $sql = "SELECT * FROM `banque` JOIN gestion_tenue_compte JOIN monetique JOIN operation_paiement
-                  ON banque.id_gestion_compte = gestion_tenue_compte.id_gestion_compte 
-                    AND banque.id_operations_paiement = operation_paiement.id_operation 
-                    AND banque.id_monetique = monetique.id_monetique 
-                    WHERE :columName BETWEEN :min AND :max 
+                  ON banque.id_gestion_compte = gestion_tenue_compte.id_gestion_compte
+                    AND banque.id_operations_paiement = operation_paiement.id_operation
+                    AND banque.id_monetique = monetique.id_monetique
+                    WHERE ".$columName." BETWEEN ".$min." AND ".$max."
                     ORDER BY banque.nom ASC ";
 
-        $query = $db->prepare($sql);
-        $parameters = array(
-            ':columName' => $columName,
-            ':min' => $min,
-            ':max' => $max
-        );
 
-        $query->execute($parameters);
+        $query = $db->prepare($sql);
+
+        $query->execute();
 
         return $query->fetchAll();
     }
