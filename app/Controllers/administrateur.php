@@ -16,24 +16,41 @@ class Administrateur
     public function auth()
     {
         if (isset($_POST["nom"]) && isset($_POST["mdp"])) {
-            return $isAdmin = \TP\Models\Admin::checkAdmin($_POST["nom"],$_POST["mdp"]);
+             $isAdmin = \TP\Models\Admin::checkAdmin($_POST["nom"],$_POST["mdp"]);
+             if ($isAdmin){
+                session_start();
+                $_SESSION["nom"] =$_POST["nom"];
+             }
+             return $isAdmin;
         }else{
             return false;
         }
     }
 
-    public function insererBanque()
+    public function logout()
     {
-        return \TP\Models\Banque::addBanque($_POST["nom"],$_POST["siege_social"],$_POST["telephone"],$_POST["fax"]);
+        session_start();
+        session_destroy();
+    }
+
+    public function insererBanque()
+    {   session_start();
+        if (isset($_SESSION["nom"]))
+         return \TP\Models\Banque::addBanque($_POST["nom"],$_POST["siege_social"],$_POST["telephone"],$_POST["fax"]);
+        else echo "non authentifié";
     }
 
     public function supprimerBanque()
-    {
-        return \TP\Models\Banque::deleteBanque($_POST["id_banque"]);
+    {   session_start();
+        if (isset($_SESSION["nom"]))
+         return \TP\Models\Banque::deleteBanque($_POST["id_banque"]);
+        else echo "non authentifié";
     }
 
     public function majBanque()
-    {
-        return \TP\Models\Banque::updateBanque($_POST["nom"],$_POST["siege_social"],$_POST["telephone"],$_POST["fax"],$_POST["id_banque"]);
+    {   session_start();
+        if (isset($_SESSION["nom"]))
+         return \TP\Models\Banque::updateBanque($_POST["nom"],$_POST["siege_social"],$_POST["telephone"],$_POST["fax"],$_POST["id_banque"]);
+        else echo "non authentifié";
     }
 }
