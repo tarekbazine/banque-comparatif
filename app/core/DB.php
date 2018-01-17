@@ -22,7 +22,7 @@ class DB{
         //information sur la BDD
         $servername = "localhost";
         $port = 3306;
-        $dbname = "ptdw";
+        $dbname = "mini-projet";
         $charset = "utf8";
         $username = "root";
         $password = "";

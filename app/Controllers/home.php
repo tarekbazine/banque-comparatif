@@ -2,18 +2,22 @@
 
 require APP . 'Models/Banque.php';
 
-class Home{
+class Home
+{
 
     public function index()
     {
-        $data = \TP\Models\Banque::getBanques();
+        include_once APP . 'core/helpers.php';
 
-        echo json_encode($data);
+        $banques = \TP\Models\Banque::getBanques();
 
-        /*// load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/footer.php';*/
+//        echo json_encode($data);
+
+        $content_path = 'Views/home.php';
+        // load views
+        require APP . 'Views/layouts/front.php';
+//        require APP . 'view/home/index.php';
+//        require APP . 'view/_templates/footer.php';
     }
 
 }

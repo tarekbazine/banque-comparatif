@@ -53,12 +53,12 @@ class Application
                 }
                 else {
 //                    echo URL;
-                    header('location: ' . URL . 'home');
+                    header('location: ' . URL . '');
 //                    header('location: ' . URL . 'problem');
                 }
             }
         } else {
-            header('location: ' . URL . 'home');
+            header('location: ' . URL . '');
 //            header('location: ' . URL . 'problem');
         }
     }
