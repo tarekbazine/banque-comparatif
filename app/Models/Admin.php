@@ -2,6 +2,8 @@
 
 namespace TP\Models;
 
+require_once APP . 'core/DB.php';
+
 use TP\Core\DB;
 
 class Admin{

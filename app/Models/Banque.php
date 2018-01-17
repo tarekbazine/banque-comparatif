@@ -2,7 +2,7 @@
 
 namespace TP\Models;
 
-require APP . 'core/DB.php';
+require_once APP . 'core/DB.php';
 
 use TP\Core\DB;
 
@@ -53,7 +53,7 @@ class Banque{
         return $query->fetchAll();
     }
 
-    public static function addBanque($nom, $siege_social, $telephone, $fax)
+    public static function addBanque($nom, $siege_social ='', $telephone='', $fax='')
     {
         $db = DB::getInstance();
 
@@ -69,40 +69,41 @@ class Banque{
         $stmt->execute();
         $id_operation_paiement = $db->lastInsertId();
 
-        $sql = "INSERT INTO `banque`(`nom`, `siege_social`, `telephone`, `fax`,`id_gestion_compte`, `id_operations_paiement`, `id_monetique`) VALUES (:nom, :siege_social, :telephone, :fax , :id_gestion_compte, :id_operations_paiement, :id_monetique)";
+        $sql = "INSERT INTO `banque`(`nom`, `siege_social`, `telephone`, `fax`,`id_gestion_compte`, `id_operations_paiement`, `id_monetique`)
+ VALUES (:nom, :siege_social, :telephone, :fax , :id_gestion_compte, :id_operations_paiement, :id_monetique)";
         $query = $db->prepare($sql);
         $parameters = array(':nom' => $nom,
             ':siege_social' => $siege_social,
             ':telephone' => $telephone,
             ':fax' => $fax,
             ':id_gestion_compte' => $id_gestion_tenue_compte,
-            ':id_monetique' => $id_monetique,
-            ':id_operation_paiement' => $id_operation_paiement
+            ':id_operations_paiement' => $id_operation_paiement,
+            ':id_monetique' => $id_monetique
         );
 
-        $query->execute($parameters);
+        return($query->execute($parameters));
     }
 
 
     public static function deleteBanque($banque_id){
         $db = DB::getInstance();
 
-        $sql = "DELETE FROM `banque` WHERE id = :banque_id";
+        $sql = "DELETE FROM `banque` WHERE id_banque = :banque_id";
         $query = $db->prepare($sql);
         $parameters = array(':banque_id' => $banque_id);
 
-        $query->execute($parameters);
+        return($query->execute($parameters));
     }
 
 
-    public static function updateBanque($nom, $siege_social, $telephone,$fax , $id_banque){
+    public static function updateBanque($nom='', $siege_social='', $telephone='',$fax='' , $id_banque){
         $db = DB::getInstance();
 
-        $sql = "UPDATE `banque` SET `nom`= :nom,`siege_social`= :siege_social ,`telephone`=[value-4],`fax`=[value-5  WHERE id_banque = :id_banque";
+        $sql = "UPDATE `banque` SET `nom`= :nom,`siege_social`= :siege_social ,`telephone`=:telephone,`fax`=:fax  WHERE id_banque = :id_banque";
         $query = $db->prepare($sql);
         $parameters = array(':nom' => $nom, ':siege_social' => $siege_social, ':telephone' => $telephone,':fax' => $fax, ':id_banque' => $id_banque);
 
-        $query->execute($parameters);
+        return($query->execute($parameters));
     }
 
 
