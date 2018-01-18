@@ -35,6 +35,10 @@ footer{
     display: none;
 }
 
+.table-prestations-comparatif{
+    margin: 5% auto;
+}
+
 
 /****************************diaporam**********************************/
 .diaporama{
