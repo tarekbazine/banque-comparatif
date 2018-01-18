@@ -1,6 +1,6 @@
 <?php
 
-require APP . 'Models/Banque.php';
+require APP . 'Models/Presentation.php';
 
 class qui_sommes_nous
 {
@@ -9,7 +9,9 @@ class qui_sommes_nous
     {
         include_once APP . 'core/helpers.php';
 
-        $banques = \TP\Models\Banque::getBanques();
+        $presentation = \TP\Models\Presentation::getPresentation();
+
+//        echo json_encode($presentation);
 
         $content_path = 'Views/qui_sommes_nous.php';
 
@@ -17,8 +19,7 @@ class qui_sommes_nous
 
         // load views
         require APP . 'Views/layouts/front.php';
-//        require APP . 'view/home/index.php';
-//        require APP . 'view/_templates/footer.php';
+
     }
 
 }

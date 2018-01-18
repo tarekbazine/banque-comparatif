@@ -3,27 +3,50 @@
 require APP . 'Models/Admin.php';
 
 require APP . 'Models/Banque.php';
+
 class Administrateur
 {
 
     public function index()
     {
-       /* require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/footer.php';*/
+        session_start();
+        if (isset($_SESSION["nom"])){
+
+            include_once APP . 'core/helpers.php';
+
+            $banques = \TP\Models\Banque::getBanques();
+//
+//            $menu_header_is_active =0;
+//
+//            $content_path = 'Views/home.php';
+
+//            echo  "dddddddddd";
+
+            require APP . 'Views/layouts/back.php';
+
+        }
+        else header('location: ' . URL . 'administrateur/login');
+
     }
 
-    public function auth()
+    public function login()
     {
+        include_once APP . 'core/helpers.php';
+
+        require APP . 'Views/backoffice/login.php';
+    }
+
+    public function auth(){
         if (isset($_POST["nom"]) && isset($_POST["mdp"])) {
              $isAdmin = \TP\Models\Admin::checkAdmin($_POST["nom"],$_POST["mdp"]);
              if ($isAdmin){
                 session_start();
                 $_SESSION["nom"] =$_POST["nom"];
+                header('location: ' . URL . 'administrateur');
              }
-             return $isAdmin;
+             echo json_encode($isAdmin);
         }else{
-            return false;
+            echo 'faux';
         }
     }
 
@@ -43,7 +66,7 @@ class Administrateur
     public function supprimerBanque()
     {   session_start();
         if (isset($_SESSION["nom"]))
-         return \TP\Models\Banque::deleteBanque($_POST["id_banque"]);
+         echo \TP\Models\Banque::deleteBanque($_POST["id_banque"]);
         else echo "non authentifié";
     }
 
