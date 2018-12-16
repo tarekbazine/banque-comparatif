@@ -2,10 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="front/img/favi.png"/>
     <title>BANQUE COMPARATIF</title>
 
-    <link href="front/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="front/css/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="front/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="front/font/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="front/css/core.css" rel="stylesheet" type="text/css">
 
     <script src="front/js/jquery.js"></script>
@@ -30,8 +31,6 @@
 
 <?php include APP . 'Views/partials/footer.php'; ?>
 
-<script src="front/js/core.js"></script>
-<script src="front/js/bootstrap.js"></script>
 <script>
 
     function plusDetails(me) {

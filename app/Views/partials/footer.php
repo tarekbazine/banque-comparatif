@@ -5,17 +5,17 @@
         <div class="col-md-2">
             <ul>
                 <li>
-                    <a href="#">Accueil</a>
+                    <a href="<?=URL?>">Accueil</a>
                 </li>
                 <li>
-                    <a href="#">Comparatif</a>
+                    <a href="comparatif">Comparatif</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-2">
             <ul>
                 <li>
-                    <a href="about-us.html">Qui sommes-nous</a>
+                    <a href="qui_sommes_nous">Qui sommes-nous</a>
                 </li>
             </ul>
         </div>

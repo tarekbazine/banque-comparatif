@@ -4,7 +4,7 @@
 
         <div class="row">
             <?php foreach ($banques as $banque) { ?>
-                <div class="col-md-4 small-card rounded">
+                <div id="card-<?= $banque->id_banque ?>" class="col-md-4 small-card rounded">
                     <div class="row">
                         <div class="col-md-3">
                             <img class="img-fluid" src="front/img/logo.png">
@@ -33,7 +33,8 @@
 
 <script>
      $('form.supprim-banque').submit(function (event) {
-         alert($(this).attr('id'));
+         var id_element = $(this).attr('id');
+//         alert($(this).attr('id'));
 
          var txt;
          var r = confirm("Svp confirmer la suppression !");
@@ -44,15 +45,18 @@
              };
              $.ajax({
                  type: 'POST',
-                 url: '/administrateur/supprimerBanque',
+                 url: 'administrateur/supprimerBanque',
                  data: dataForm, // our data object
                  dataType: 'json',
                  encode: true
              })
              // using the done promise callback
                  .done(function (data) {
-//                     if ()
-                     alert(data);
+                     if (data == 1){
+//                         alert('cc');
+                         $('#card-'+id_element).remove();
+                     }
+//                     alert(data);
                      console.log(data);
                  });
          } else {

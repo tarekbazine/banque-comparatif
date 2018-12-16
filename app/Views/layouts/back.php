@@ -2,10 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="front/img/favi.png"/>
+
     <title>ADMINISTRATION - BANQUE COMPARATIF</title>
 
-    <link href="/front/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/front/css/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="front/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="front/font/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <style>
         html, body {
             height: 100%;
@@ -41,7 +43,7 @@
         }
     </style>
 
-    <script src="/front/js/jquery.js"></script>
+    <script src="front/js/jquery.js"></script>
 </head>
 <body>
 
@@ -58,8 +60,8 @@
                 <a href="#" class="list-group-item list-group-item-action">Modifie presetation info</a>
             </div>
 
-            <form action="">
-                <button type="submit" class="logout btn btn-warning">Logout</button>
+            <form action="administrateur/logout">
+                <button type="submit" class="logout btn btn-warning">Deconnexion</button>
             </form>
         </div>
 
@@ -97,25 +99,27 @@
 </section>
 
 
-<script src="/front/js/bootstrap.js"></script>
 <script>
-    $('#btn-ajout-banque').click(function () {
+    $('#btn-ajout-banque').click(function (event) {
         $('.list-group a').removeClass('active');
         $(this).addClass('active');
         $('.hide-show ').hide();
         $('#ajout-banque').show();
+        event.preventDefault();
     });
-    $('#btn-supprime-banque').click(function () {
+    $('#btn-supprime-banque').click(function (event) {
         $('.list-group a').removeClass('active');
         $(this).addClass('active');
         $('.hide-show ').hide();
         $('#supprime-banque').show();
+        event.preventDefault();
     });
-    $('#btn-modif-banque').click(function () {
+    $('#btn-modif-banque').click(function (event) {
         $('.list-group a').removeClass('active');
         $(this).addClass('active');
         $('.hide-show ').hide();
         $('#modif-banque').show();
+        event.preventDefault();
     });
 </script>
 </body>

@@ -60,6 +60,20 @@
                 .addClass(colorCel(secondBanque[$(this).attr('id')],fistBanque[$(this).attr('id')]));
         });
 
+        function isNormalInteger(str) {
+            var n = Math.floor(Number(str));
+            return String(n) === str && n >= 0;
+        }
+
+        $('td').each(function(){
+            if(isNormalInteger($(this).text())){
+                if (0 == parseInt($(this).text()))
+                    $(this).text('GRATUIT');
+                else
+                    $(this).text($(this).text() +' DA');
+            }
+        });
+
         event.preventDefault();
     });
 
@@ -265,7 +279,7 @@
                 </table>
 
                 <br>
-                <h4>Opération de paiement</h4>
+                <h4>Monétique</h4>
                 <br>
                 <table class="table table-striped text-center">
 
@@ -370,6 +384,7 @@
 
 
         $('#compare-section').append(html);
+
     }
 
     function colorCel(val1,val2){

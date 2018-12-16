@@ -17,7 +17,6 @@ class Comparatif
             $banques[$banque->id_banque] = $banque;
         }
 
-//        echo json_encode($data);
 
         $content_path = 'Views/comparatif.php';
 
@@ -25,8 +24,6 @@ class Comparatif
 
         // load views
         require APP . 'Views/layouts/front.php';
-//        require APP . 'view/home/index.php';
-//        require APP . 'view/_templates/footer.php';
     }
 
 }

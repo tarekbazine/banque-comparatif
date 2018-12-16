@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
     <title>PAGE ADMINISTRATION</title>
-    <link href="/front/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="<?=URL?>/front/img/favi.png"/>
+
+    <link href="<?=URL?>/front/css/custom.css" rel="stylesheet" type="text/css">
     <style>
         /* Bordered form */
         form {
@@ -84,9 +86,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="offset-md-3 col-md-6">
-            <form action="/administrateur/auth" method="post">
+            <form action="<?=URL?>/administrateur/auth" method="post">
                 <div class="imgcontainer">
-                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                    <img src="<?=URL?>/front/img/avatar.png" alt="Avatar" class="avatar">
                 </div>
 
                 <div class="container">
@@ -97,9 +99,6 @@
                     <input type="password" placeholder="Enter le mot de pass" name="mdp" required>
 
                     <button type="submit">Login</button>
-<!--                    <label>-->
-<!--                        <input type="checkbox" checked="checked"> Remember me-->
-<!--                    </label>-->
                 </div>
 
                 <div class="container" style="background-color:#f1f1f1">

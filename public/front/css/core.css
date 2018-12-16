@@ -108,3 +108,21 @@ footer{
     animation-delay : 9s;
 }
 
+#img0{
+    left:620px;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 0s;
+}
+#img01{
+    left:0;
+
+    animation-name: left-to-right;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay : 0s;
+}

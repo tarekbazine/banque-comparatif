@@ -1,6 +1,6 @@
 <div class="hide-show" id="ajout-banque" style="display: none">
     <div class="col-sm-12">
-        <form class="form">
+        <form id="ajout-banque-form" class="form">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputName">Nom</label>
@@ -25,3 +25,43 @@
         </form>
     </div>
 </div>
+
+
+
+<script>
+    $('#ajout-banque-form').submit(function (event) {
+
+        var txt;
+        var r = confirm("Svp confirmer la ajout !");
+        if (r == true) {
+            txt = "You pressed OK!";
+            var dataForm = {
+                nom:$('#inputName').val(),
+                siege_social:$('#inputAddress').val(),
+                telephone:$('#inputTel').val(),
+                fax:$('#inputFax').val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'administrateur/insererBanque',
+                data: dataForm, // our data object
+                dataType: 'json',
+                encode: true
+            })
+            // using the done promise callback
+                .done(function (data) {
+                    if (data == 1){
+//                         alert('cc');
+                        location.reload();
+                    }
+                    console.log(data);
+                });
+        } else {
+            txt = "You pressed Cancel!";
+            event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+    });
+</script>

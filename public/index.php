@@ -1,22 +1,13 @@
 <?php
 
-define('URL_PUBLIC_FOLDER', 'public');
-define('URL_PROTOCOL', '//');
-define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
-define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
-define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
+define('URL_SUB_FOLDER', str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])));
 
+define('URL', '//' . $_SERVER['HTTP_HOST'] . URL_SUB_FOLDER);
 
-// set a constant that holds the project's folder path, like "/var/www/".
-// DIRECTORY_SEPARATOR adds a slash to the end of the path
-define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-// set a constant that holds the project's "application" folder, like "/var/www/application".
-define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR);
-
+define('APP', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
 
 // load application class
 require APP . 'core/application.php';
-//require APP . 'core/controller.php';
 
 // start the application
 $app = new Application();

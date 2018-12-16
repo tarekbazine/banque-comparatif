@@ -14,7 +14,6 @@ class Filtre{
 
         } else {
               echo "err";
-//            header('location: ' . URL . 'songs/index');
         }
 
     }
@@ -29,7 +28,6 @@ class Filtre{
 
         } else {
             echo "err2";
-//            header('location: ' . URL . 'songs/index');
         }
     }
 

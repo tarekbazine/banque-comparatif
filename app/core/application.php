@@ -2,19 +2,12 @@
 
 class Application
 {
-    /** @var null The controller */
     private $url_controller = null;
 
-    /** @var null The method (of the above controller), often also named "action" */
     private $url_action = null;
 
-    /** @var array URL parameters */
     private $url_params = array();
 
-    /**
-     * "Start" the application:
-     * Analyze the URL elements and calls the according controller/method or the fallback
-     */
     public function __construct()
     {
         // create array with URL parts in $url
@@ -54,18 +47,14 @@ class Application
                 else {
 //                    echo URL;
                     header('location: ' . URL . '');
-//                    header('location: ' . URL . 'problem');
                 }
             }
         } else {
             header('location: ' . URL . '');
-//            header('location: ' . URL . 'problem');
         }
     }
 
-    /**
-     * Get and split the URL
-     */
+
     private function splitUrl()
     {
         if (isset($_GET['url'])) {
@@ -75,22 +64,13 @@ class Application
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
 
-            // Put URL parts into according properties
-            // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
-            // @see http://davidwalsh.name/php-shorthand-if-else-ternary-operators
             $this->url_controller = isset($url[0]) ? $url[0] : null;
             $this->url_action = isset($url[1]) ? $url[1] : null;
 
-            // Remove controller and action from the split URL
             unset($url[0], $url[1]);
 
-            // Rebase array keys and store the URL params
             $this->url_params = array_values($url);
 
-            // for debugging. uncomment this if you have problems with the URL
-            //echo 'Controller: ' . $this->url_controller . '<br>';
-            //echo 'Action: ' . $this->url_action . '<br>';
-            //echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
         }
     }
 }

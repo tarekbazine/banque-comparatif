@@ -1,23 +1,3 @@
-// $('#filter-form').submit(function (event) {
-//     var dataForm = {
-//         id_ctg: idType,
-//         nom_prd: prd_name
-//     };
-//     $.ajax({
-//         type: 'POST',
-//         url: 'http://127.0.0.1/WEB/td_php/backend/addProduct.php',
-//         data: dataForm, // our data object
-//         dataType: 'json',
-//         encode: true
-//     })
-//     // using the done promise callback
-//         .done(function (data) {
-//             console.log(data);
-//         });
-//
-//     event.preventDefault();
-// });
-
 $('#classer-form').submit(function (event) {
 
     var presentation_selected = $('#classer-form select').val();
